@@ -16,5 +16,5 @@ mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
     .sourceMaps();
 
-// Zet de notificaties uit want zijn verveldend
+// Zet de notificaties uit want zijn irritant
 mix.disableNotifications();

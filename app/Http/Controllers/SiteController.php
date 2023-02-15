@@ -176,24 +176,7 @@ class SiteController extends Controller
         $site = Site::inRandomOrder()->first();
 
         if($site === null) {
-            echo
-                '<style>
-                    .error-wrapper {
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: center;
-                        height: 100vh;
-                        font-family: sans-serif;
-                        overflow: hidden;
-                    }
-                </style>'.
-                '<div class="error-wrapper">' .
-                    '<h1>Er zijn op dit moment geen sites beschikbaar.</h1>' .
-                    '<p>Dit komt omdat er nog geen sites bestaan. probeer dit op een later moment weer.</p>'.
-                    '<p>Mocht je al een student zijn, upload dan hier jou website!</p>' .
-                '</div>';
-            exit;
+            return view('errors.no-sites');
         }
 
         return $this->show($request, $site);
@@ -208,24 +191,7 @@ class SiteController extends Controller
         $site = Site::whereNotNull('path_en')->inRandomOrder()->first();
 
         if($site === null) {
-            echo
-                '<style>
-                    .error-wrapper {
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: center;
-                        height: 100vh;
-                        font-family: sans-serif;
-                        overflow: hidden;
-                    }
-                </style>'.
-                '<div class="error-wrapper">' .
-                '<h1>Er zijn op dit moment geen Englestalige sites beschikbaar.</h1>' .
-                '<p>Dit komt er omdat er nog geen sites bestaan. Probeer dit op een later moment weer.</p>'.
-                '<p>Mocht je al een student zijn, upload dan hier jou website!</p>' .
-                '</div>';
-            exit;
+            return view('errors.no-sites', ['english' => true]);
         }
 
         return $this->show($request, $site)
